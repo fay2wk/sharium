@@ -1,0 +1,63 @@
+<div class="container">
+      <!-- Search, and Upload Button -->
+      <div id="searchFilterWrap">
+        <form id="searchForm">
+          <input type="text"
+                    id="searchBox"
+                    placeholder="Search by title"
+                    ng-model="searchTxt"
+                    ng-model-options="{debounce : 600}" />
+        </form>
+
+        <div class="modal-backdrop-am-fade"
+              id="sortByWrap">
+
+          <button class="btn btn-primary"
+                      data-animation="am-fade-and-scale"
+                      data-placement="center"
+                      data-template-url="app/main/addPostModal.html"
+                      bs-modal="showModal">Add Post</button>
+            </div>
+          </div>
+
+  <!-- Angular Grid -->
+  <div class="container" infinite-scroll="nextPage()" infinite-scroll-disabled="busy || noMoreData" infinite-scroll-distance="0.1">
+    <ul class="dynamic-grid angular-grid"
+          angular-grid="posts"
+          grid-width="275"
+          gutter-size="10"
+          angular-grid-id="gallery"
+          refresh-on-img-load="true">
+     <li data-ng-repeat="post in posts track by $index"
+          class="grid"
+          ng-cloak>
+        <a ui-sref="post ({ postId: post._id })"
+            class="postLink">
+          <img ng-src="{{ post.image }}"
+                  class="grid-img"
+                  data-actual-width="{{ post.actualWidth }}"
+                  data-actual-height="{{ post.actualHeight }}" />
+          <div class="post-description-trim">
+            {{ post.description.substr(0,100) }}
+          </div>
+
+          <div class="titleClass">
+            {{ post.title }}
+          </div>
+        </a>
+        <div class="social">
+        <a href="#"
+             class="like-post"
+             ng-click="addVote(post)">
+          <i class="fa fa-thumbs-o-up fa-2x icon-like"></i></a>
+            <span class="likeCount">{{ post.upVotes }}</span>
+
+            <span class="viewCount pull-right">{{ post.views }}</span>
+          <i class="fa fa-eye fa-2x pull-right icon-views"></i>
+
+        </div>
+      </li>
+    </ul>
+    <div ng-show='busy'>Loading data...</div>
+  </div>
+</div>
