@@ -8,13 +8,13 @@ var authTypes = ['github', 'twitter', 'facebook', 'google'];
 var UserSchema = new Schema({
   name: String,
   gravatar: String,
-  looks: [{
+  posts: [{
     type: Schema.ObjectId,
-    ref: 'Look'
+    ref: 'Post'
   }],
   likes: [{
     type: Schema.ObjectId,
-    ref: 'Look'
+    ref: 'Post'
   }],
   details: {
     website: String,

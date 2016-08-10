@@ -1,9 +1,7 @@
-'use strict';
+var mongoose = require('mongoose')
+var Schema = mongoose.Schema
 
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-
-var LookSchema = new Schema({
+var PostSchema = new Schema({
   image: String,
   linkURL: String,
   title: String,
@@ -29,6 +27,6 @@ var LookSchema = new Schema({
     type: Number,
     'default': 0
   }
-});
+})
 
-module.exports = mongoose.model('Look', LookSchema);
+module.exports = mongoose.model('Post', PostSchema)

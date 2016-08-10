@@ -1,7 +1,6 @@
-'use strict';
 
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose')
+var Schema = mongoose.Schema
 
 var CommentSchema = new Schema({
   author: {
@@ -16,9 +15,9 @@ var CommentSchema = new Schema({
       type: String
     }
   },
-  lookId: {
+  postId: {
     type: Schema.ObjectId,
-    ref: 'Look'
+    ref: 'Post'
   },
   gravatar: {
     type: String
@@ -31,9 +30,6 @@ var CommentSchema = new Schema({
     type: Date,
     'default': Date.now
   }
-});
+})
 
-module.exports = mongoose.model('Comment', CommentSchema);
-
-
-
+module.exports = mongoose.model('Comment', CommentSchema)

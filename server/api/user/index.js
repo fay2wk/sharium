@@ -12,11 +12,11 @@ router.get('/', auth.hasRole('admin'), controller.index);
 router.get('/me', auth.isAuthenticated(), controller.me);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 
-router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
+router.put('/:id/password', auth.isAuthenticated(), controller.changePassword)
 
-router.post('/me', controller.me);
-router.post('/', controller.create);
+router.post('/me', controller.me)
+router.post('/', controller.create)
 
-router.delete('/:id', auth.hasRole('admin'), controller.destroy);
+router.delete('/:id', auth.hasRole('admin'), controller.destroy)
 
 module.exports = router;
