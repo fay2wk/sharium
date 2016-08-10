@@ -49,7 +49,7 @@
       myModal.$promise.then(myModal.show)
     }
 
-    postsAPI.getAllposts()
+    postsAPI.getAllPosts()
       .then(function(data) {
         console.log('posts found ')
         console.log(data)
