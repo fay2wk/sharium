@@ -20,7 +20,7 @@
     $scope.busy = true
     $scope.allData = []
     var page = 0
-    var step = 3
+    var step = 50
 
     var alertSuccess = $alert({
       title: 'Success! ',
@@ -50,10 +50,8 @@
     }
 
     postsAPI.getAllPosts()
-      .then(function(data) {
+      .then(function (data) {
         console.log('posts found ')
-        console.log(data)
-        // $scope.posts = data.data
         $scope.allData = data.data
         $scope.nextPage()
         $scope.busy = false
@@ -62,12 +60,12 @@
         console.log('failed to get posts ' + err)
       })
 
-      $scope.nextPage = function() {
-        var postLength = $scope.posts.length;
+      $scope.nextPage = function () {
+        var postLength = $scope.posts.length
         if($scope.busy) {
-          return;
+          return
         }
-        $scope.busy = true;
+        $scope.busy = true
         $scope.posts = $scope.posts.concat($scope.allData.splice(page * step, step))
         page++
         $scope.busy = false
@@ -76,45 +74,44 @@
         }
       }
 
-      $scope.showUploadForm = function() {
+      $scope.showUploadForm = function () {
         $scope.uploadPostForm = true
         $scope.scrapePostForm = false
         $scope.uploadPostTitle = false
       }
 
-    // Watch for changes to URL, Scrape and Display the image
-    $scope.$watch("post.link", function (newVal, oldVal) {
+    // Watch for changes to URL
+    $scope.$watch('post.link', function (newVal, oldVal) {
       if (newVal.length > 5) {
-        $scope.loading = true;
+        $scope.loading = true
         var link = {
             url: $scope.post.link
           }
         scrapeAPI.getScrapeDetails(link)
-          .then(function(data) {
-            console.log(data);
+          .then(function (data) {
+            console.log(data)
             $scope.showScrapeDetails = true
             $scope.gotScrapeResults = true
             $scope.uploadPostTitle = false
             $scope.post.imgThumb = data.data.img
             $scope.post.description = data.data.desc
           })
-          .catch(function(data) {
+          .catch(function (data) {
             console.log('failed to return from scrape')
             $scope.loading = false
             $scope.post.link = ''
             $scope.gotScrapeResults = false
           })
-          .finally(function() {
+          .finally(function () {
             $scope.loading = false
             $scope.uploadPostForm = false
           })
       }
     })
 
-    $scope.addVote = function(post) {
-
+    $scope.addVote = function (post) {
       postsAPI.upVotePost(post)
-        .then(function(data) {
+        .then(function (data) {
           console.log(data)
           post.upVotes++
         })
@@ -123,7 +120,7 @@
         })
     }
 
-    $scope.addScrapePost = function() {
+    $scope.addScrapePost = function () {
       var post = {
         description: $scope.post.description,
         title: $scope.post.title,
@@ -134,8 +131,7 @@
         _creator: $scope.user._id
       }
       postsAPI.createScrapePost(post)
-        .then(function(data) {
-          console.log('post success')
+        .then(function (data) {
           console.log(data)
           alertSuccess.show()
           $scope.showScrapeDetails = false
@@ -145,7 +141,6 @@
           $scope.posts.splice(0, 0, data.data)
         })
         .catch(function () {
-          console.log('failed to post from frontend ')
           $scope.showScrapeDetails = false
           alertFail.show()
         })
@@ -176,9 +171,6 @@
         alertSuccess.show()
       }, function (resp) {
         alertFail.show()
-      }, function (evt) {
-        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total)
-        console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name)
       })
     }
   }

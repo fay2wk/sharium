@@ -12,11 +12,12 @@
         <div class="modal-backdrop-am-fade"
               id="sortByWrap">
 
-          <button class="btn btn-primary"
+          <button class="btn btn-default"
                       data-animation="am-fade-and-scale"
                       data-placement="center"
                       data-template-url="app/main/addPostModal.html"
                       bs-modal="showModal">Add Post</button>
+          <button class="btn btn-default">Add Aquarium</button>
             </div>
           </div>
 
@@ -51,9 +52,9 @@
              ng-click="addVote(post)">
           <i class="fa fa-thumbs-o-up fa-2x icon-like"></i></a>
             <span class="likeCount">{{ post.upVotes }}</span>
-
-            <span class="viewCount pull-right">{{ post.views }}</span>
-          <i class="fa fa-eye fa-2x pull-right icon-views"></i>
+            <p>
+              Views: <span class="viewCount">{{ post.views }}</span>
+            </p>
 
         </div>
       </li>

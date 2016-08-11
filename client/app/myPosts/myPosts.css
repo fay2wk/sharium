@@ -20,8 +20,8 @@
 .title-input {
   margin-left: 10px;
 }
-.show-no-posts h3 {
-  text-align: center;
+.label {
+  background: #ccc;
 }
 .user-posts-title {
   margin: 0 auto;

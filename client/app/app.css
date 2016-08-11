@@ -1,7 +1,8 @@
+@import 'https://fonts.googleapis.com/css?family=Bree+Serif';
 
-/**
- * Bootstrap Fonts
- */
+html, body {
+  font-family: 'Bree Serif', serif;
+}
 
 @font-face {
     font-family: 'Glyphicons Halflings';
@@ -74,5 +75,3 @@ a[ng-click]  { cursor:pointer; }
   -moz-transform:translate3d(100px, 0, 0);
   transform:translate3d(100px, 0, 0);
 }
-
-

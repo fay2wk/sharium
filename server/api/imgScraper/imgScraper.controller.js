@@ -1,6 +1,7 @@
 var scrapers = {}
 
 scrapers['imgur'] = require('./scrapers/imgur.js')
+scrapers['fishchan'] = require('./scrapers/fishchan.js')
 
 exports.scrape = function (req, res) {
   var url = req.body.url
@@ -8,6 +9,9 @@ exports.scrape = function (req, res) {
 
   if(url.indexOf('imgur') > -1) {
     scraperToUse = 'imgur'
+  }
+  if(url.indexOf('fishchannel') > -1) {
+    scraperToUse = 'fishchan'
   } else {
     console.log('no scraper')
   }

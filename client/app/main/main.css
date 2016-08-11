@@ -151,9 +151,6 @@
   text-align: center;
   width: 40px;
 }
-#rssButton {
-  width: 60px
-}
 .well.well-lg {
   width: 400px;
   padding: 10px 15px;
@@ -187,10 +184,6 @@
   font-size: 20px;
   margin-right: 10px;
   margin-top: 5px;
-}
-.icon-views {
-  margin-right: 10px;
-  margin-top: 4px;
 }
 .close-btn-main button {
   margin-left: 20px;

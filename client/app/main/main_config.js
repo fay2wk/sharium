@@ -4,7 +4,7 @@
     .config(config)
 
   config.$inject = ['$stateProvider']
-  function config($stateProvider) {
+  function config ($stateProvider) {
     $stateProvider
       .state('main', {
         url: '/',

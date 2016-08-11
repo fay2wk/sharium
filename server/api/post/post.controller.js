@@ -4,12 +4,12 @@ var path = require('path')
 var express = require('express')
 var utils = require('../../utils/utils.js')
 
-exports.allPosts = function(req, res) {
+exports.allPosts = function (req, res) {
   Post.find({})
     .sort({
       createTime: -1
     })
-    .exec(function(err, posts) {
+    .exec(function (err, posts) {
       if (err) {
         return handleError (res, err)
       }
@@ -45,7 +45,7 @@ exports.userPosts = function (req, res) {
 exports.scrapeUpload = function(req, res) {
   var random = utils.randomizer(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
 
-  utils.downloadURI(req.body.image, '../client/assets/images/uploads/' + random + '.png', function(filename) {
+  utils.downloadURI(req.body.image, './client/assets/images/uploads/' + random + '.png', function(filename) {
     console.log('done')
 
     var newPost = new Post()
@@ -71,7 +71,7 @@ exports.scrapeUpload = function(req, res) {
   })
 }
 
-exports.upload = function(req, res) {
+exports.upload = function (req, res) {
   var newPost = new Post()
   var fileimage = req.middlewareStorage.fileimage
 
@@ -145,15 +145,15 @@ exports.update = function (req, res) {
   })
 }
 
-exports.delete = function(req, res) {
-  Post.findById(req.params.id, function(err, post) {
+exports.delete = function (req, res) {
+  Post.findById(req.params.id, function (err, post) {
     if(err) {
       return handleError(res, err)
     }
     if(!post) {
       return res.send(404)
     }
-    post.remove(function(err) {
+    post.remove(function (err) {
       if(err) {
         return handleError(res, err)
       }
@@ -162,8 +162,8 @@ exports.delete = function(req, res) {
   })
 }
 
-exports.addView = function(req, res) {
-  Post.findById(req.params.id, function(err, post) {
+exports.addView = function (req, res) {
+  Post.findById(req.params.id, function (err, post) {
     if(err) {
       return handleError(res, err)
     }
@@ -180,7 +180,7 @@ exports.addView = function(req, res) {
   })
 }
 
-exports.addUpvote = function(req, res) {
+exports.addUpvote = function (req, res) {
   Post.findById(req.params.id, function (err, post) {
     if(err) {
       return handleError(res, err)

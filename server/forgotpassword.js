@@ -1,4 +1,4 @@
-var nodemailer = require('nodemailer');
+var nodemailer = require('nodemailer')
 var user = require('./api/user/user.controller.js')
 
 var transporter = nodemailer.createTransport({
@@ -12,7 +12,7 @@ var transporter = nodemailer.createTransport({
 
 exports.reset = function(req, res) {
     // setup e-mail
-    var newPass = user.resetPassword(req.query.email);
+    var newPass = user.resetPassword(req.query.email)
 
     var mailOptions = {
         from: 'SnapIt Team <swordanchorthesis@gmail.com>', // sender address
@@ -25,9 +25,9 @@ exports.reset = function(req, res) {
         if(error){
             console.log(error);
         }else{
-            console.log('Message sent: ' + info.response);
+            console.log('Message sent: ' + info.response)
         }
-    });
+    })
 
-    res.end();
-};
+    res.end()
+}

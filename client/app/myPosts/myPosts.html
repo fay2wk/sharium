@@ -1,14 +1,15 @@
 <div class="container">
   <div class="user-posts-title">
     <h2>My Posts:
-      <span class="label label-info">{{ userPosts.length }}</span></h2>
+      <span class="label">{{ userPosts.length }}</span></h2>
   </div>
   <div class="spacer"></div>
 
-  <div class="show-no-posts"
-          ng-if="noPosts()">
-          <h3>No Posts, <a ui-sref="main">add one</a>?</h>
-        </div>
+  <button class="btn btn-default"
+          data-animation="am-fade-and-scale"
+          data-placement="center"
+          data-template-url="app/main/addPostModal.html"
+          bs-modal="showModal">Add Post</button>
 
     <!-- Angular Grid -->
     <ul class="dynamic-grid angular-grid"

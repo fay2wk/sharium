@@ -26,7 +26,7 @@
             </div>
             <div class="comment-button">
               <button type="submit"
-                          class="btn btn-primary">Comment</button>
+                          class="btn btn-default">Comment</button>
             </div>
           </form>
           <div class="container comments-div" ng-repeat="comment in comments">
@@ -76,8 +76,6 @@
               <i class="fa fa-thumbs-o-up fa-2x icon-listing-like"></i></a>
                 <span class="likeCountListing">{{ post.upVotes }}</span>
 
-                <span class="viewCountListing pull-right">{{ post.views }}</span>
-              <i class="fa fa-eye fa-2x pull-right icon-listing-view"></i>
             </div>
           </div>
 
@@ -94,11 +92,6 @@
                class="post-save btn btn-success btn-block"
                ng-show="currentUser.id">
                Save
-          </a>
-          <a ui-sref="authenticate"
-               class="listing-buy btn btn-success btn-block"
-               ng-show="!currentUser.id">
-            Login/Signup to Save Post
           </a>
         </div>
       </div>

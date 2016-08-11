@@ -1,17 +1,14 @@
-'use strict';
+var path = require('path')
+var _ = require('lodash')
 
-var path = require('path');
-var _ = require('lodash');
-
-function requiredProcessEnv(name) {
+function requiredProcessEnv (name) {
   if(!process.env[name]) {
-    throw new Error('You must set the ' + name + ' environment variable');
+    throw new Error('You must set the ' + name + ' environment variable')
   }
-  return process.env[name];
+  return process.env[name]
 }
 
-// All configurations will extend these options
-// ============================================
+// All configurations
 var all = {
   env: process.env.NODE_ENV,
 
@@ -21,12 +18,11 @@ var all = {
   // Server port
   port: process.env.PORT || 9000,
 
-  // Should we populate the DB with sample data?
   seedDB: false,
 
-  // Secret for session, you will want to change this and make it an environment variable
+  // Secret for session
   secrets: {
-    session: 'meanApp-secret'
+    session: 'sharium-secret'
   },
 
   // List of user roles
@@ -49,21 +45,18 @@ var all = {
   },
 
   facebook: {
-    clientID:     process.env.FACEBOOK_ID || 'id',
+    clientID: process.env.FACEBOOK_ID || 'id',
     clientSecret: process.env.FACEBOOK_SECRET || 'secret',
-    callbackURL:  (process.env.DOMAIN || '') + '/auth/facebook/callback'
+    callbackURL: (process.env.DOMAIN || '') + '/auth/facebook/callback'
   },
 
   twitter: {
-    clientID:     process.env.TWITTER_ID || 'id',
+    clientID: process.env.TWITTER_ID || 'id',
     clientSecret: process.env.TWITTER_SECRET || 'secret',
-    callbackURL:  (process.env.DOMAIN || '') + '/auth/twitter/callback'
+    callbackURL: (process.env.DOMAIN || '') + '/auth/twitter/callback'
   },
+}
 
-};
-
-// Export the config object based on the NODE_ENV
-// ==============================================
 module.exports = _.merge(
   all,
-  require('./' + process.env.NODE_ENV + '.js') || {});
+  require('./' + process.env.NODE_ENV + '.js') || {})
