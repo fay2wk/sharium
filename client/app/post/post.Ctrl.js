@@ -1,4 +1,4 @@
-(function() {
+(function () {
   angular
     .module('app')
     .controller('PostCtrl', PostCtrl)
@@ -37,7 +37,7 @@
         console.log('failed to get comments ' + err)
       })
 
-    $scope.addVote = function(post) {
+    $scope.addVote = function (post) {
       PostsAPI.upVotePost(post)
         .then(function(data) {
           console.log(data)
@@ -70,11 +70,11 @@
 
     function addView() {
       postsAPI.addView($scope.id)
-        .then(function(res) {
+        .then(function (res) {
           console.log('view added to Post')
           console.log(res)
         })
-        .catch(function(err) {
+        .catch(function (err) {
           console.log('failed to increment ', err)
         })
     }
