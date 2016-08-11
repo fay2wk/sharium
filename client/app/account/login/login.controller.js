@@ -16,10 +16,10 @@
           email: $scope.user.email,
           password: $scope.user.password
         })
-          .then(function() {
+          .then(function () {
             $state.go('main')
           })
-          .catch(function(err) {
+          .catch(function (err) {
             $scope.errors.other = err.message
           })
       }
