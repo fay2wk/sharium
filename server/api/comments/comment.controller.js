@@ -1,7 +1,7 @@
 var Comment = require('./comment.model')
 var express = require('express')
 
-exports.addComment = function(req, res) {
+exports.addComment = function (req, res) {
   var newComment = new Comment()
   newComment.author.id = req.body.authorId
   newComment.author.name = req.body.authorName
@@ -11,7 +11,7 @@ exports.addComment = function(req, res) {
   newComment.postId = req.body.postId
   newComment.createTime = Date.now()
 
-  newComment.save(function(err, comment) {
+  newComment.save(function (err, comment) {
     if (err) {
       console.log('error saving comment')
       return res.send(500)
@@ -21,7 +21,7 @@ exports.addComment = function(req, res) {
            .json(comment)
     }
   })
-};
+}
 
 exports.getComments = function (req, res) {
   Comment.find({
