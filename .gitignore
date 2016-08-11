@@ -41,6 +41,3 @@ jspm_packages
 
 # Configs
 /server/config
-
-# Optional REPL history
-.node_repl_history
