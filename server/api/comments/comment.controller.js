@@ -16,7 +16,6 @@ exports.addComment = function (req, res) {
       console.log('error saving comment')
       return res.send(500)
     } else {
-      console.log(comment)
       res.status(200)
            .json(comment)
     }
@@ -37,7 +36,6 @@ exports.getComments = function (req, res) {
     if(!comments) {
       return res.send(404)
     }
-    console.log(comments)
     return res.status(200)
   .json(comments)
   })

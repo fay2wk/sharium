@@ -1,15 +1,15 @@
 (function () {
   angular
     .module('app')
-    .factory('Auth', Auth);
+    .factory('Auth', Auth)
 
-  Auth.$inject = ['$location', '$rootScope', '$http', 'User', '$cookieStore', '$q'];
+  Auth.$inject = ['$location', '$rootScope', '$http', 'User', '$cookieStore', '$q']
 
   function Auth($location, $rootScope, $http, User, $cookieStore, $q) {
-    var currentUser = {};
+    var currentUser = {}
 
     if ($cookieStore.get('token')) {
-      currentUser = User.get();
+      currentUser = User.get()
     }
 
     return {
@@ -35,10 +35,6 @@
 
         return deferred.promise
       },
-
-      /**
-       * Delete access token and user info
-       */
       logout: function () {
         $cookieStore.remove('token')
         $cookieStore.remove('authTokenCookie')
@@ -61,8 +57,7 @@
           }.bind(this)).$promise
       },
 
-      /**
-       * Change password
+      /* Change password
        */
       changePassword: function(oldPassword, newPassword, callback) {
         var cb = callback || angular.noop
@@ -72,26 +67,26 @@
         }, {
           oldPassword: oldPassword,
           newPassword: newPassword
-        }, function(user) {
-          return cb(user)
-        }, function(err) {
-          return cb(err)
+        }, function (user) {
+          return cb (user)
+        }, function (err) {
+          return cb (err)
         }).$promise
       },
 
-      getCurrentUser: function() {
+      getCurrentUser: function () {
         return currentUser
       },
 
-      isLoggedIn: function() {
+      isLoggedIn: function () {
         return currentUser.hasOwnProperty('role')
       },
 
-      isLoggedInAsync: function(cb) {
+      isLoggedInAsync: function (cb) {
         if (currentUser.hasOwnProperty('$promise')) {
-          currentUser.$promise.then(function() {
+          currentUser.$promise.then(function () {
             cb(true)
-          }).catch(function() {
+          }).catch(function () {
             cb(false)
           })
         } else if (currentUser.hasOwnProperty('role')) {
@@ -101,15 +96,15 @@
         }
       },
 
-      isAdmin: function() {
+      isAdmin: function () {
         return currentUser.role === 'admin'
       },
 
-      getToken: function() {
+      getToken: function () {
         return $cookieStore.get('token')
       },
 
-      getUserEmail: function() {
+      getUserEmail: function () {
         return currentUser.email
       }
     }

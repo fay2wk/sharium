@@ -47,17 +47,17 @@
       })
 
     looksAPI.getAllLooks()
-      .then(function(data) {
+      .then(function (data) {
         console.log(data)
         $scope.looks = data.data
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log('failed to get all posts')
       })
 
-    $scope.deleteUser = function(user) {
+    $scope.deleteUser = function (user) {
       adminAPI.deleteUser(user)
-        .then(function(data) {
+        .then(function (data) {
           console.log('deleted user')
           var index = $scope.users.indexOf(user)
           $scope.users.splice(index, 1)

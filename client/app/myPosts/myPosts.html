@@ -38,7 +38,7 @@
         <a href="#"
              class="like-post"
              ng-click="addLike(post)">
-          <i class="fa fa-2x fa-thumbs-o-up pull-left icon-like"></i></a>
+          <i class="fa fa-heart-o" aria-hidden="true"></i></a>
             <span class="likeCount">{{ post.upVotes }}</span>
                 <a href="#"
                      ng-click="editPost(post)"
@@ -46,11 +46,12 @@
                      data-animation="am-fade-and-scale"
                      data-template-url="app/myPosts/edit_post_modal.html"
                      bs-modal="showModal">
-                  <i class="fa fa-2x fa-pencil pull-right icon-edit"></i></a>
+                  <i class="fa fa-pencil-square-o pull-right icon-edit" aria-hidden="true"
+                    data-title="Edit post" bs-tooltip></i></a>
                 <a href="#"
                      class="edit-post"
                      ng-click="delete(post)">
-                   <i class="fa fa-2x fa-trash-o pull-right icon-edit"
+                   <i class="fa fa-ban pull-right icon-edit" aria-hidden="true"
                        data-title="Permanently remove post"
                        bs-tooltip></i></a>
       </li>
